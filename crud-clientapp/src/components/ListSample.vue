@@ -30,11 +30,12 @@
           </template>
 
           <template v-slot:cell(commandCol)="data">
-            <a href="#" @click.prevent="updateRecord(data.item)">Edit</a> -
-            <a href="#" @click.prevent="deleteRecord(data.item.id)">Delete</a>
+            <a href="#" class="text-primary" @click.prevent="updateRecord(data.item)">Edit</a> -
+            <a href="#" class="text-danger" @click.prevent="deleteRecord(data.item.id)">Delete</a>
           </template>
         </b-table>
       </b-col>
+      <!-- EDIT FORM -->
       <b-col lg="3">
         <b-card :title="(model.id ? 'Edit ID#' + model.id : 'New Record')">
           <form @submit.prevent="createRecord">
@@ -42,10 +43,19 @@
               <b-form-input v-model="model.name" type="text"></b-form-input>
             </b-form-group>
             <b-form-group label="Value">
-              <b-form-input rows="4" v-model="model.value" type="number"></b-form-input>
+              <b-form-input rows="4" v-model="model.value"></b-form-input>
             </b-form-group>
             <b-form-group label="Date Time">
-              <b-form-input rows="4" v-model="model.dateTime" type="datetime-local"></b-form-input>
+              <b-form-datepicker
+                id="form-datepicker-button"
+                v-model="model.dateTime"
+                :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+                today-button
+                reset-button
+                close-button
+              ></b-form-datepicker>
+
+              <b-form-timepicker v-model="model.dateTime" :hour12="false"></b-form-timepicker>
             </b-form-group>
             <div>
               <b-btn type="submit" variant="success">Save Record</b-btn>
@@ -134,5 +144,9 @@ export default {
  <style>
 #nprogress.red .bar {
   background: red;
+}
+#nprogress.red .spinner-icon {
+  border-top-color: red;
+  border-left-color: red;
 }
 </style>

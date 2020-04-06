@@ -7,7 +7,7 @@
         <b-navbar-brand href="#" @click.prevent="logout" v-else>Logout</b-navbar-brand>
         <b-collapse is-nav id="nav-collapse">
           <b-navbar-nav>
-             <b-nav-item to="/">Home</b-nav-item>
+            <b-nav-item to="/">Home</b-nav-item>
             <b-nav-item to="/listsample">List Records</b-nav-item>
             <b-nav-item to="/hello">Hello</b-nav-item>
           </b-navbar-nav>
@@ -20,58 +20,56 @@
     </main>
 
     <!-- Add the login widget on popup -->
-     <LoginWidget />
-
+    <LoginWidget />
   </div>
 </template>
 
 <script>
-
-import LoginWidget from '@/components/LoginWidget'
+import LoginWidget from "@/components/LoginWidget";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     LoginWidget
   },
-  data: function () {
+  data: function() {
     return {
       authenticated: false
-    }
+    };
   },
-  created () {
-    this.isAuthenticated()    
+  created() {
+    this.isAuthenticated();
   },
   watch: {
-    // Everytime the route changes, check for auth status    
-    '$route': 'isAuthenticated'
+    // Everytime the route changes, check for auth status
+    $route: "isAuthenticated"
   },
   methods: {
-    async isAuthenticated () {
-      this.authenticated = await this.$auth.isAuthenticated()  
-      localStorage.authenticated=this.authenticated;   
+    async isAuthenticated() {
+      this.authenticated = await this.$auth.isAuthenticated();
+      localStorage.authenticated = this.authenticated;
     },
-    login () {    
-      this.$auth.loginRedirect('/')
+    login() {
+      this.$auth.loginRedirect("/");
     },
-    async logout () {
-      await this.$auth.logout()
-      await this.isAuthenticated()
+    async logout() {
+      await this.$auth.logout();
+      await this.isAuthenticated();
 
       // Navigate back to home
-      this.$router.push({ path: '/' })
+      this.$router.push({ path: "/" });
     }
   }
-}
+};
 </script>
 
-<style>
+<style scoped>
 body {
   margin: 0;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -87,7 +85,7 @@ header {
   height: 56px;
   padding: 0 16px 0 24px;
   background-color: #f8f9fa;
-  color: #ffffff;
+  color: #fff;
 }
 
 header span {
@@ -95,7 +93,7 @@ header span {
   position: relative;
   font-size: 20px;
   line-height: 1;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   font-weight: 400;
   box-sizing: border-box;
   padding-top: 16px;

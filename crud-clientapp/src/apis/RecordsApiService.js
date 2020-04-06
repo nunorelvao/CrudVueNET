@@ -28,6 +28,7 @@ export default {
     })
       .catch(function(error) {
         errorCall = true;
+        var nprogressEl = document.getElementById("nprogress");
         nprogressEl.classList.add("red");
       })
       .then(req => {

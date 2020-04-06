@@ -43,19 +43,19 @@
               <b-form-input v-model="model.name" type="text"></b-form-input>
             </b-form-group>
             <b-form-group label="Value">
-              <b-form-input rows="4" v-model="model.value"></b-form-input>
+              <b-form-input rows="4" v-model="model.value" type="number"></b-form-input>
             </b-form-group>
             <b-form-group label="Date Time">
               <b-form-datepicker
                 id="form-datepicker-button"
-                v-model="model.dateTime"
+                v-model="model.date"
                 :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
                 today-button
                 reset-button
                 close-button
               ></b-form-datepicker>
 
-              <b-form-timepicker v-model="model.dateTime" :hour12="false"></b-form-timepicker>
+              <b-form-timepicker v-model="model.time" :hour12="false"></b-form-timepicker>
             </b-form-group>
             <div>
               <b-btn type="submit" variant="success">Save Record</b-btn>

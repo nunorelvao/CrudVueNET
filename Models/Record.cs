@@ -10,6 +10,7 @@ namespace CrudVueNET.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
-        public string DateTime { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
     }
 }

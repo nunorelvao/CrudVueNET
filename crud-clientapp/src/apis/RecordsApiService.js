@@ -12,8 +12,7 @@ const client = axios.create({
 export default {
   async execute(method, resource, data) {
     NProgress.start();
-    var nprogressEl = document.getElementById("nprogress");
-    var errorCall = false;
+    let errorCall = false;
     const accessToken = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
 
     // console.log("TOKEN :" + accessToken)
@@ -28,7 +27,7 @@ export default {
     })
       .catch(function(error) {
         errorCall = true;
-        var nprogressEl = document.getElementById("nprogress");
+        const nprogressEl = document.getElementById("nprogress");
         nprogressEl.classList.add("red");
       })
       .then(req => {

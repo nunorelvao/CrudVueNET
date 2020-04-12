@@ -3,8 +3,12 @@
     <header>
       <b-navbar toggleable="md" type="light" variant="light">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-        <b-navbar-brand href="#" v-b-modal.login-modal v-if="!authenticated">Login</b-navbar-brand>
-        <b-navbar-brand href="#" @click.prevent="logout" v-else>Logout</b-navbar-brand>
+        <b-navbar-brand href="#" v-b-modal.login-modal v-if="!authenticated"
+          >Login</b-navbar-brand
+        >
+        <b-navbar-brand href="#" @click.prevent="logout" v-else
+          >Logout</b-navbar-brand
+        >
         <b-collapse is-nav id="nav-collapse">
           <b-navbar-nav>
             <b-nav-item to="/">Home</b-nav-item>
@@ -16,7 +20,7 @@
     </header>
     <main>
       <!-- <nprogress-container></nprogress-container> -->
-      <router-view></router-view>
+      <router-view />
     </main>
 
     <!-- Add the login widget on popup -->
@@ -25,7 +29,7 @@
 </template>
 
 <script>
-import LoginWidget from "@/components/LoginWidget";
+import LoginWidget from "./components/LoginWidget";
 
 export default {
   name: "app",
@@ -63,39 +67,25 @@ export default {
 };
 </script>
 
-<style scoped>
-body {
-  margin: 0;
-}
-
+<style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
 }
 
-main {
-  text-align: center;
-  margin-top: 40px;
+#nav {
+  padding: 30px;
 }
 
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #f8f9fa;
-  color: #fff;
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
 }
 
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

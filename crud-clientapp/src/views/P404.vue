@@ -2,8 +2,8 @@
   <div>
     <h1>404</h1>
     <div>
-      Destination [<b>{{ this.$route.params.pathMatch }}</b
-      >] not found!
+      Destination [
+      <b>{{ this.$route.params.pathMatch }}</b>] not found!
     </div>
   </div>
 </template>

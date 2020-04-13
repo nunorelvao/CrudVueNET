@@ -7,10 +7,10 @@ namespace CrudVueNET.Models
 {
     public class Record
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Value { get; set; }
-        public string Date { get; set; }
+        public double Value { get; set; }
+        public DateTime? Date { get; set; }
         public string Time { get; set; }
     }
 }

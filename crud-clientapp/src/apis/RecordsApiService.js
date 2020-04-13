@@ -4,8 +4,9 @@ import sampleConfig from "../config";
 import NProgress from "nprogress/nprogress";
 import "nprogress/nprogress.css";
 
+
 const client = axios.create({
-  baseURL: sampleConfig.resourceServer.messagesUrl,
+  baseURL: sampleConfig.apiConfig.baseURL,
   json: true
 });
 
@@ -25,7 +26,8 @@ export default {
         Authorization: accessToken
       }
     })
-      .catch(function(error) {
+      .catch(function (error) {
+        console.log(error)
         errorCall = true;
         const nprogressEl = document.getElementById("nprogress");
         nprogressEl.classList.add("red");

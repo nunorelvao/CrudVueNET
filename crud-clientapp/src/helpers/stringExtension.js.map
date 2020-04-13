@@ -1,0 +1,1 @@
+{"version":3,"file":"stringExtension.js","sourceRoot":"","sources":["stringExtension.ts"],"names":[],"mappings":";AAIE,MAAM,CAAC,SAAS,CAAC,SAAS,GAAG;IAC3B,QAAQ,IAAI,EAAE;QACZ,KAAK,MAAM,CAAC;QACZ,KAAK,GAAG,CAAC;QACT,KAAK,IAAI,CAAC;QACV,KAAK,KAAK;YACR,OAAO,IAAI,CAAC;QACd;YACE,OAAO,KAAK,CAAC;KAChB;AACH,CAAC,CAAA"}

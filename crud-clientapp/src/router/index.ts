@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
   const authRequired = to.matched.some(record => record.meta.requiresAuth);
   const isAuthenticated = (localStorage.authenticated).toBoolean();
 
-  console.log(`authRequired: ${authRequired}  isAuthenticated: ${isAuthenticated}`);
+  //console.log(`authRequired: ${authRequired}  isAuthenticated: ${isAuthenticated}`);
 
   if (authRequired && !isAuthenticated) {
     next({ name: "P401", params: { routedFrom: to.path } });

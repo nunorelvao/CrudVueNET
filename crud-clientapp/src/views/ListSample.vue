@@ -43,7 +43,7 @@
               <b-form-input v-model="model.name" type="text"></b-form-input>
             </b-form-group>
             <b-form-group label="Value">
-              <b-form-input rows="4" v-model="model.value" type="number"></b-form-input>
+              <b-form-input rows="4" v-model.number="model.value" type="number"></b-form-input>
             </b-form-group>
             <b-form-group label="Date Time">
               <b-form-datepicker
@@ -67,16 +67,25 @@
   </div>
 </template>
 
+
 <script>
+//LEGACY JavaScript API
 import api from "@/apis/RecordsApiService";
+//NEW TypeScript API (Typed)
+import RecordsApi from "@/apis/recordsapi";
+import { Record } from "@/models/Record";
+
+import apiConfig from "@/apis/api.config";
+import { isNullOrUndefined } from "util";
+let apiTS = null;
 
 export default {
   data() {
     return {
       isLoading: false,
       fields: [],
-      records: [],
-      model: {},
+      records: Array[Record],
+      model: new Record(),
       sortBy: "name",
       sortDesc: false
     };
@@ -89,35 +98,51 @@ export default {
       this.isLoading = true;
 
       try {
-        this.records = await api.getAll();
+        const config = await apiConfig.setConfig();
+        apiTS = new RecordsApi(config);
+        this.records = await apiTS.getAllRecords();
+
+        //this.records = await api.getAllRecords();
+
         //to make bootstrap table sortable need to provide items sortable
         //Map fields from top row
+
         this.fields = await Promise.all(
-          Object.keys(this.records[0]).map(function(value) {
-            return { key: value, sortable: value === "id" ? false : true };
+          Object.keys(
+            isNullOrUndefined(this.records) ? [] : this.records[0]
+          ).map(function(value) {
+            return {
+              key: value,
+              sortable: value === "id" ? false : true
+            };
           })
         );
+
         //push aditional column to add command links edit and delete
         this.fields.push({
           key: "commandCol",
           label: "&nbsp;",
           sortable: false
         });
+      } catch (errors) {
+        console.log(errors);
       } finally {
         this.isLoading = false;
       }
     },
     async updateRecord(record) {
       // We use Object.assign() to create a new (separate) instance
-      this.model = Object.assign({}, record);
+      this.model = Object.assign(new Record(), record);
     },
     async createRecord() {
       const isUpdate = !!this.model.id;
 
       if (isUpdate) {
-        await api.update(this.model.id, this.model);
+        await apiTS.putRecord(this.model.id, this.model);
+        //await api.update(this.model.id, this.model);
       } else {
-        await api.create(this.model);
+        await apiTS.postRecord(this.model);
+        //await api.create(this.model);
       }
 
       // Clear the data inside of the form
@@ -133,7 +158,8 @@ export default {
           this.model = {};
         }
 
-        await api.delete(id);
+        await apiTS.deleteRecord(id);
+        //await api.delete(id);
         await this.getAll();
       }
     }

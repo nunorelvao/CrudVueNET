@@ -50,7 +50,7 @@ namespace CrudVueNET.Controllers
 
         // PUT api/records/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, Record model)
+        public async Task<ActionResult> Put(int id, Record model)
         {
             var exists = await _dbContext.Records.AnyAsync(f => f.Id == id);
             if (!exists)
@@ -68,7 +68,7 @@ namespace CrudVueNET.Controllers
 
         // DELETE api/records/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int id)
         {
             var entity = await _dbContext.Records.FindAsync(id);
 

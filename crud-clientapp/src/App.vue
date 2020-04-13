@@ -3,12 +3,8 @@
     <header>
       <b-navbar toggleable="md" type="light" variant="light">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-        <b-navbar-brand href="#" v-b-modal.login-modal v-if="!authenticated"
-          >Login</b-navbar-brand
-        >
-        <b-navbar-brand href="#" @click.prevent="logout" v-else
-          >Logout</b-navbar-brand
-        >
+        <b-navbar-brand href="#" v-b-modal.login-modal v-if="!authenticated">Login</b-navbar-brand>
+        <b-navbar-brand href="#" @click.prevent="logout" v-else>Logout</b-navbar-brand>
         <b-collapse is-nav id="nav-collapse">
           <b-navbar-nav>
             <b-nav-item to="/">Home</b-nav-item>

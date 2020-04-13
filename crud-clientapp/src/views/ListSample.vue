@@ -64,6 +64,14 @@
         </b-card>
       </b-col>
     </b-row>
+
+    <my-toast
+      :show="updateToast"
+      :append="false"
+      :toasttext="toastText"
+      :toasttitle="toastTitle"
+      :variant="toastVariant"
+    ></my-toast>
   </div>
 </template>
 
@@ -77,6 +85,11 @@ import { Record } from "@/models/Record";
 
 import apiConfig from "@/apis/api.config";
 import { isNullOrUndefined } from "util";
+
+import Vue from "vue";
+import MyBVToast from "@/components/BVToastVueComponent";
+Vue.component("my-toast", MyBVToast);
+
 let apiTS = null;
 
 export default {
@@ -87,13 +100,23 @@ export default {
       records: Array[Record],
       model: new Record(),
       sortBy: "name",
-      sortDesc: false
+      sortDesc: false,
+      updateToast: false,
+      toastTitle: "",
+      toastText: "",
+      toastVariant: ""
     };
   },
   async created() {
     this.getAll();
   },
   methods: {
+    setToast(title, text, variant) {
+      this.toastVariant = variant;
+      this.toastTitle = title;
+      this.toastText = text;
+      this.updateToast = true;
+    },
     async getAll() {
       this.isLoading = true;
 
@@ -133,21 +156,26 @@ export default {
     async updateRecord(record) {
       // We use Object.assign() to create a new (separate) instance
       this.model = Object.assign(new Record(), record);
+      this.updateToast = false;
     },
     async createRecord() {
       const isUpdate = !!this.model.id;
 
       if (isUpdate) {
         await apiTS.putRecord(this.model.id, this.model);
+        //show toast sucess
+        this.setToast(
+          "UPDATED RECORD ID " + `${this.model.id}`,
+          "THE RECORD ID " + `${this.model.id}` + " HAS BEEN UPDATED!",
+          "success"
+        );
         //await api.update(this.model.id, this.model);
       } else {
         await apiTS.postRecord(this.model);
         //await api.create(this.model);
       }
-
       // Clear the data inside of the form
       this.model = {};
-
       // Fetch all records again to have latest data
       await this.getAll();
     },

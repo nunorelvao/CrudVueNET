@@ -7,7 +7,8 @@
     <b-modal
       id="login-modal"
       title="LOGIN"
-      header-bg-variant="primary"
+      header-bg-variant="dark"
+      body-bg-variant="dark"
       static
       lazy
       hide-footer
@@ -177,3 +178,23 @@ export default {
   }
 };
 </script>
+
+<style>
+#okta-sign-in {
+  margin: auto !important;
+}
+#okta-signin-container .okta-sign-in-header {
+  background-color: #c1cabd;
+}
+#okta-signin-container .auth-content {
+  background-color: #c1cabd;
+  /* background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      #c1cabd 10px,
+      #a8cf95 20px /* #c1cabd, #a8cf95 
+    ), 
+   linear-gradient(to bottom, #eee, #999); */
+}
+</style>

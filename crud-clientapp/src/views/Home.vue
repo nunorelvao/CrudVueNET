@@ -6,10 +6,10 @@
       <b-carousel
         id="carousel-1"
         v-model="slide"
-        :interval="0"
+        :interval="4000"
         controls
         indicators
-        background="#ababab"
+        background="#343a40"
         img-width="800"
         img-height="200"
         style="text-shadow: 1px 1px 2px #333;"
@@ -48,7 +48,23 @@
         </b-carousel-slide>
 
         <b-carousel-slide>
+          <h5>Bootstrap Vue.js</h5>
+          <p>The power and simplicity of Bootstrap as Vue Js Plugin</p>
+          <template v-slot:img>
+            <div class="fixed-img-carrousel">
+              <img
+                alt="BootStrap Vue.js"
+                src="https://bootstrap-vue.org/_nuxt/icons/icon_512.67aef2.png"
+                width="auto"
+                height="200"
+              />
+            </div>
+          </template>
+        </b-carousel-slide>
+
+        <b-carousel-slide>
           <h5>TypeScript</h5>
+          <p>The power of Javascript, leveraged as OOP Language</p>
           <template v-slot:img>
             <div class="fixed-img-carrousel">
               <img
@@ -68,7 +84,6 @@
             <div class="fixed-img-carrousel">
               <img
                 alt="OKTA Authentication"
-                text="The power and simplicity of Vue.js"
                 src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Okta_logo.svg"
                 width="auto"
                 height="200"
@@ -84,7 +99,6 @@
             <div class="fixed-img-carrousel">
               <img
                 alt="Simple Data Storage"
-                text="The power and simplicity of Vue.js"
                 src="https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg"
                 width="auto"
                 height="200"
@@ -100,7 +114,6 @@
             <div class="fixed-img-carrousel">
               <img
                 alt="Azure Hosted"
-                text="The power and simplicity of Vue.js"
                 src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg"
                 width="auto"
                 height="200"
@@ -117,7 +130,6 @@
               <img
                 class="github-svg"
                 alt="GitHub"
-                text="The power and simplicity of Vue.js"
                 src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
                 width="auto"
                 height="200"
@@ -133,7 +145,6 @@
             <div class="fixed-img-carrousel">
               <img
                 alt="DockerHub"
-                text="The power and simplicity of Vue.js"
                 src="https://cdn.worldvectorlogo.com/logos/docker.svg"
                 width="auto"
                 height="200"
@@ -164,28 +175,30 @@ export default {
   },
   methods: {
     onSlideStart(slide) {
-      this.sliding = true;
+      if (slide != undefined) this.sliding = true;
     },
     onSlideEnd(slide) {
-      this.sliding = false;
+      if (slide != undefined) this.sliding = false;
     }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-h1,
-h2 {
-  font-weight: normal;
-  font-family: fantasy;
-}
-
+<style scope>
 .fixed-img-carrousel {
   min-height: 200px;
   line-height: 200px;
   display: block;
   padding: 30px 0 130px 0;
-  background-color: dimgrey;
+  background-color: #343a40;
+  color: #e1f0da;
+}
+h5 {
+  color: #e1f0da;
+}
+
+p {
+  color: #a8cf95;
 }
 </style>

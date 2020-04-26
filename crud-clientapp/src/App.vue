@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <b-navbar toggleable="md" type="light" variant="light">
+      <b-navbar toggleable="md" type="dark" variant="dark">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-navbar-brand href="#" v-b-modal.login-modal v-if="!authenticated">Login</b-navbar-brand>
         <b-navbar-brand href="#" @click.prevent="logout" v-else>Logout</b-navbar-brand>
@@ -14,6 +14,7 @@
         </b-collapse>
       </b-navbar>
     </header>
+
     <main>
       <!-- <nprogress-container></nprogress-container> -->
       <router-view />
@@ -64,12 +65,26 @@ export default {
 </script>
 
 <style>
+html,
+body,
+main {
+  background-color: #343a40;
+}
+h1,
+h2 {
+  font-weight: normal;
+  font-family: fantasy;
+  background: -webkit-linear-gradient(#c1cabd, #a8cf95);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #e1f0da;
 }
 
 #nav {
@@ -78,7 +93,7 @@ export default {
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #4f92d4;
 }
 
 #nav a.router-link-exact-active {

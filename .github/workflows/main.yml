@@ -44,12 +44,6 @@ jobs:
       - name: Build Docker Image
         run: docker image build -t nunorelvao/crudvuenet:latest --no-cache .
       
-      - name: List Docker Image
-        run: docker images ls
-      
-      - name: Connect DockerHub
-        run: docker login --username ${{secrets.DOCKERHUB_USERNAME}} --password ${{secrets.DOCKERHUB_PASSWORD}}  
-
       - name: Push Docker Image to DockerHub
         run: docker push nunorelvao/crudvuenet:latest
      

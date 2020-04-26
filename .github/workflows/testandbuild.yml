@@ -46,6 +46,3 @@ jobs:
       
       - name: Push Docker Image to DockerHub
         run: docker push nunorelvao/crudvuenet:latest
-     
-          
-     

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 <template>
   <div>
     <div id="okta-placeholder" style="display:none;">
@@ -37,12 +38,14 @@ export default {
     console.log("created login widget");
   },
   mounted: function() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     this.$root.$on("bv::modal::shown", (bvEvent, modalId) => {
       const sigInEl = document.getElementById("okta-signin-container");
       //sigInEl.style.display = "";
       document.getElementById("login-modal-container").append(sigInEl);
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     this.$root.$on("bv::modal::hide", (bvEvent, modalId) => {
       const sigInEl = document.getElementById("okta-signin-container");
       //sigInEl.style.display = "none";

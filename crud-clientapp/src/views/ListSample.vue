@@ -78,7 +78,7 @@
 
 <script>
 //LEGACY JavaScript API
-import api from "@/apis/RecordsApiService";
+// import api from "@/apis/RecordsApiService";
 //NEW TypeScript API (Typed)
 import RecordsApi from "@/apis/recordsapi";
 import { Record } from "@/models/Record";
@@ -129,17 +129,18 @@ export default {
 
         //to make bootstrap table sortable need to provide items sortable
         //Map fields from top row
+        //console.log(isNullOrUndefined(this.records[0]));
 
-        this.fields = await Promise.all(
-          Object.keys(
-            isNullOrUndefined(this.records) ? [] : this.records[0]
-          ).map(function(value) {
-            return {
-              key: value,
-              sortable: value === "id" ? false : true
-            };
-          })
-        );
+        if (!isNullOrUndefined(this.records[0]) && this.records != []) {
+          this.fields = await Promise.all(
+            Object.keys(this.records[0]).map(function(value) {
+              return {
+                key: value,
+                sortable: value === "id" ? false : true
+              };
+            })
+          );
+        }
 
         //push aditional column to add command links edit and delete
         this.fields.push({

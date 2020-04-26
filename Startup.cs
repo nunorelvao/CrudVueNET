@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using McMaster.AspNetCore.LetsEncrypt;
+using System.IO;
 
 namespace CrudVueNET
 {
@@ -62,14 +64,19 @@ namespace CrudVueNET
                 options.AddPolicy("VueCorsPolicy", builder =>
                 {
                     builder
-                      .WithOrigins("http://localhost:8080")
+                      .WithOrigins("http://localhost:8080", "https://localhost:8081")
                       .AllowAnyHeader()
                       .AllowAnyMethod()
                       .AllowCredentials();
                 });
             });
 
-
+            //services.AddLetsEncrypt()
+            //    .PersistDataToDirectory(new DirectoryInfo("LetsEncrypt/"), "password");
+            //.PersistCertificatesToAzureKeyVault(o =>
+            //{
+            //    o.AzureKeyVaultEndpoint = "https://[url].vault.azure.net/";
+            //}); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,6 +95,7 @@ namespace CrudVueNET
 
             dbContext.Database.EnsureCreated();
 
+            app.UseStaticFiles();
 
             app.UseRouting();
             //must appear after routing

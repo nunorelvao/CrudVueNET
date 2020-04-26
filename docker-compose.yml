@@ -1,0 +1,19 @@
+﻿version: "3"
+
+networks:
+    mynetwork1: 
+
+services:
+  
+  crudvuenet: 
+    container_name: crudvuenet
+    build:
+      context: .
+      #dockerfile:  ./Dockerfile    
+    hostname: crudvuenet    
+    networks:
+      - mynetwork1  
+    ports:
+      #Port for api
+      - "8080:80"
+      - "8081:443"

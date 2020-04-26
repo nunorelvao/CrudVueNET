@@ -1,0 +1,34 @@
+﻿version: "3"
+
+networks:
+    mynetwork1: 
+
+services:
+  
+  crudvuenet: 
+    container_name: crudvuenet
+    build:
+      context: .
+      #dockerfile:  ./Dockerfile
+    image: nunorelvao/crudvuenet:latest    
+    hostname: crudvuenet
+    #volumes:
+      #- C:\Users\nunor\AppData\Roaming\microsoft\UserSecrets\:/root/.microsoft/usersecrets 
+      #- ~/.aspnet/https:/https:ro    
+    networks:
+      - mynetwork1  
+    ports:
+      #Port for api
+      - "8080:80"
+      - "8081:443"
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=8081
+      # - ASPNETCORE_Kestrel__Certificates__Default__Password=nrvegas1
+      # - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/CrudVueNET.pfx
+      # - VUE_APP_OKTA_CLIENT_ID=0oa4zlongaSZbOAON4x6
+      # - VUE_APP_OKTA_ISSUER=https://dev-101130.okta.com/oauth2/default
+      # - VUE_APP_OKTA_TESTING_DISABLEHTTPSCHECK=true
+
+  

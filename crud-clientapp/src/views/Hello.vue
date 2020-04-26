@@ -13,7 +13,14 @@ export default {
   name: "Home",
   data() {
     return {
-      title: "CRUD .NET SampleApp" + "<br />" + "ENV: " + process.env.NODE_ENV
+      title:
+        "CRUD .NET SampleApp" +
+        "<br />" +
+        "ENV: " +
+        process.env.NODE_ENV +
+        "<br />" +
+        "API_BASEURL ENV: " +
+        process.env.VUE_APP_API_BASEURL
     };
   },
   components: {

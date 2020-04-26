@@ -5,10 +5,10 @@
       Destination [
       <b>{{ $route.params.routedFrom }}</b>] Unauthorized!
     </div>
-    <div>
-      Please Sig In:
-      <b-button variant="outline-primary" v-b-modal.login-modal>Sig In</b-button>
-    </div>
+    <hr />
+    <div>Please Sig In Clicking below</div>
+    <br />
+    <b-button variant="outline-success" v-b-modal.login-modal>Sig In</b-button>
   </div>
 </template>
 

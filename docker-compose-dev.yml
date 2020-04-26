@@ -9,7 +9,7 @@ services:
     container_name: crudvuenet
     build:
       context: .
-      #dockerfile:  ./Dockerfile
+      dockerfile:  ./Dockerfile.dockerlocal
     image: nunorelvao/crudvuenet:dev    
     hostname: crudvuenet
     volumes:

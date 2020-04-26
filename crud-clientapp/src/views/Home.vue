@@ -187,10 +187,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scope>
 .fixed-img-carrousel {
-  min-height: 200px;
-  line-height: 200px;
+  min-height: 300px;
   display: block;
-  padding: 30px 0 130px 0;
+  padding: 30px 0 120px 0;
   background-color: #343a40;
   color: #e1f0da;
 }

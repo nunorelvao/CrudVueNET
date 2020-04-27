@@ -13,8 +13,8 @@ https://crudvuenet.azurewebsites.net
 
 ## Spa app for demonstrating the full lifecycle of modern architecture and stacks , from development to the hosting in cloud.
 
-- REGISTRY DOKER HUB PUBLIC
-- HOST IN MICROSOFT AZURE (FREE)
+- REGISTRY DOKER HUB PUBLIC [https://hub.docker.com/repository/docker/nunorelvao/crudvuenet/general]
+- HOST IN MICROSOFT AZURE [FREE Maybe Down for long periods]
 - BUILT TOTTALY FROM GROUND UP
 - USING VUE BOOTSTRAP / VUE ROUTER
 - OKLA Credentials in both API and Client Side OAUTH2

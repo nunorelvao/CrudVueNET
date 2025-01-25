@@ -16,7 +16,7 @@
     "@types/nprogress": "^0.2.0",
     "@types/okta__okta-vue": "^1.2.0",
     "@types/qs": "^6.9.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.9.0",
     "core-js": "^3.6.4",
     "jquery": "^3.5.0",
